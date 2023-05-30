@@ -27,6 +27,9 @@ function execute() public returns (uint256 result) {
 ```
 
 ***
+## Nested fork of HyVM
+It prevents state changing operation to be executed by the HyVM.  
+See [HyVM / EVM divergence](#hyvm--evm-divergence) for more details.
 
 ## What is a hypervisor?
 
@@ -112,6 +115,15 @@ Consequently, there are some opcodes divergence:
 - `codesize`: returns the calldatasize, not the VM size
 - `callcode` will revert : it is deprecated and generally considered unsafe.
 - `codecopy`: copies from the calldata, not the code
+
+This fork of HyVM implements other divergences.  
+It will revert for the following opcodes:
+- `sstore`
+- `create`
+- `create2`
+- `delegatecall`  
+
+This will prevent state changing operations reducing attack surface and mistake when using this version of the HyVM.
 
 ## Addresses
 

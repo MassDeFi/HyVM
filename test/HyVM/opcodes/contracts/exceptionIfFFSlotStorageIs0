@@ -1,0 +1,9 @@
+# creates an exception if slot 0xFF of storage is 0
+# 0x6760FF54600757FE5B60005260086018F3
+
+PUSH1 0xFF
+SLOAD
+PUSH1 0x7
+JUMPI
+INVALID
+JUMPDEST
