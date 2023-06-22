@@ -1,9 +1,4 @@
-# See exceptionIfFirstSlotStorageIs0 for more info on this call
-
-# Set first slot in the current contract
-PUSH1 0x1
-PUSH1 0x0
-SSTORE
+# See exceptionIfFFSlotStorageIs0 for more info on this call
 
 # Callcode to callcodeContract contract
 PUSH1 0x0

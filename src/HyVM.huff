@@ -354,10 +354,7 @@
         CONTINUE()
 
     op_sstore:
-        // check can store things here
-        CHECK_SSTORE()
-        sstore
-        CONTINUE()
+        0x00 dup1 revert
 
     op_jump:
         // [jumpTo]
@@ -656,11 +653,7 @@
         CONTINUE()
 
     op_create:
-        swap1
-        FIX_MEMOFFSET()
-        swap1
-        create
-        CONTINUE()
+        0x00 dup1 revert
 
     op_call:
         // takes            // [gas, address, value, argsOffset, argsSize, retOffset, retSize]
@@ -691,36 +684,13 @@
         return
 
     op_delegatecall:
-        // takes                                   // [gas, address, argsOffset, argsSize, retOffset, retSize]
-
-        // fix argsOffset
-        swap2                                      // [argsOffset, address, gas, argsSize, retOffset, retSize]
-        FIX_MEMOFFSET()                            // [hyvmArgsOffset, gas, address, argsSize, retOffset, retSize]
-        swap2                                      // [gas, address, hyvmArgsOffset, argsSize, retOffset, retSize]
-
-        // fix retOffset
-        swap4                                      // [retOffset, address, hyvmArgsOffset, argsSize, gas, retSize]
-        FIX_MEMOFFSET()                            // [hyvmRetOffset, address, hyvmArgsOffset, argsSize, gas, retSize]
-        swap4                                      // [gas, address, hyvmArgsOffset, argsSize, hyvmRetOffset, retSize]
-
-        // check can call
-        CHECK_DELEGATECALL()                       // [gas, address, hyvmArgsOffset, argsSize, hyvmRetOffset, retSize]
-
-        delegatecall                               // [success]
-        CONTINUE()
+        0x00 dup1 revert
 
     wrong_context:
         0x00 0x00 revert
 
     op_create2:
-        // takes        // [value, offset, size, salt]
-
-        // fix offset
-        swap1           // [offset, value, size, salt]
-        FIX_MEMOFFSET() // [hyvmOffset, value, size, salt]
-        swap1           // [value, hyvmOffset, size, salt]
-        create2         // [success]
-        CONTINUE()
+        0x00 dup1 revert
 
     op_staticcall:
         // takes            // [gas, address, argsOffset, argsSize, retOffset, retSize]

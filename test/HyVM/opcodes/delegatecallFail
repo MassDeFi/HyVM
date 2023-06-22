@@ -1,11 +1,6 @@
-# See exceptionIfFirstSlotStorageIs0 for more info on this call
+# See exceptionIfFFSlotStorageIs0 for more info on this call
 
-# Reset first slot in current contract
-PUSH1 0x0
-PUSH1 0x0
-SSTORE
-
-# Delegatecall to exceptionIfFirstSlotStorageIs0 contract
+# Delegatecall to exceptionIfFFSlotStorageIs0 contract
 PUSH1 0x0
 PUSH1 0x0
 PUSH1 0x0
