@@ -1,6 +1,6 @@
 
-## Nested fork of HyVM
-For more information about the HyVM, see the [orignal HyVM repo](https://github.com/oguimbal/HyVM).   
+## Mass fork of HyVM
+For more information about the HyVM, see the [original HyVM repo](https://github.com/oguimbal/HyVM).   
 This fork prevents several state changing operations to be executed to reduce attack surface and mistakes.
 
 ## HyVM divergence
