@@ -7,7 +7,7 @@ import "foundry-huff/HuffDeployer.sol";
 /// @notice Deploy the HyVM using CREATE2
 contract Deploy is Script {
     // The address is the same on all EVM chains.
-    Deployer public constant DEPLOYER = Deployer(0x13b0D85CcB8bf860b6b79AF3029fCA081AE9beF2);
+    Deployer public constant DEPLOYER = Deployer(0x35Da41c476fA5c6De066f20556069096A1F39364);
 
     function run() public returns (address deployedAddress) {
         string memory bashCommand = 'cast abi-encode "f(bytes)" $(huffc ./src/HyVM.huff --bytecode -e paris | head)';
@@ -18,7 +18,7 @@ contract Deploy is Script {
         inputs[2] = bashCommand;
 
         bytes memory bytecode = abi.decode(vm.ffi(inputs), (bytes));
-        bytes32 salt = keccak256("HyVM_V1");
+        bytes32 salt = keccak256("ALPHA");
 
         deployedAddress = DEPLOYER.computeAddress(salt, keccak256(bytecode));
 
