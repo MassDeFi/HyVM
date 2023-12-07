@@ -4,11 +4,11 @@ pragma solidity ^0.8.16;
 import "forge-std/Test.sol";
 
 library Utils {
-    function iToHex(bytes memory buffer) public pure returns (string memory) {
+    function iToHex(bytes memory buffer) internal pure returns (string memory) {
         return iToHex(buffer, 0);
     }
 
-    function iToHex(bytes memory buffer, uint256 padTo) public pure returns (string memory) {
+    function iToHex(bytes memory buffer, uint256 padTo) internal pure returns (string memory) {
         // Fixed buffer size for hexadecimal convertion
         uint256 len = buffer.length > padTo ? buffer.length : padTo;
         bytes memory converted = new bytes(len * 2);
@@ -28,7 +28,7 @@ library Utils {
     }
 
     function replace(bytes memory data, address _find, address _replaceBy)
-        public
+        internal
         pure
         returns (bytes memory replaced)
     {
@@ -51,7 +51,7 @@ library Utils {
     }
 
     function replaceFirstOccurenceBytes(bytes memory data, bytes memory find, bytes memory replaceBy)
-        public
+        internal
         pure
         returns (bytes memory replaced)
     {
@@ -67,7 +67,7 @@ library Utils {
     }
 
     function replaceSelectorBypassCalldataSizeCheck(bytes memory bytecode, bytes memory selector)
-        public
+        internal
         pure
         returns (bytes memory finalBytecode)
     {
@@ -82,7 +82,7 @@ library Utils {
     }
 
     function indexOf(bytes memory data, bytes memory find, uint256 startAt)
-        public
+        internal
         pure
         returns (bool success, uint256 index)
     {
