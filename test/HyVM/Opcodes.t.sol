@@ -1147,4 +1147,14 @@ contract OpcodesTest is Test {
         (bool success, ) = hyvm.delegatecall(hex"60ff600055");
         assertEq(success, true);
     }
+
+    function testPrevrandao(uint256 prevrandao) public {
+        // bytecode generated using: easm test/opcodes/prevrandao
+        // EVM-Assembler does not implement it, so it is added manually
+        vm.prevrandao(bytes32(prevrandao));
+        (bool success, bytes memory data) = hyvm.delegatecall(hex"4460005260206000f3");
+        assertEq(success, true);
+        (uint256 result) = abi.decode(data, (uint256));
+        assertEq(result, prevrandao);
+    }
 }
