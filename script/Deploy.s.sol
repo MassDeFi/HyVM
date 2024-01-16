@@ -21,7 +21,7 @@ contract Deploy is Script {
         // See createX documentation for more information on salt:
         // * address(0) allows for permissionless deployment
         // * hex"00" no cross-chain redeploy protection
-        bytes32 salt = bytes32(abi.encodePacked(address(0), hex"00", bytes11(uint88(uint256(keccak256("ALPHA"))))));
+        bytes32 salt = bytes32(abi.encodePacked(address(0), hex"00", bytes11(uint88(uint256(keccak256("BETA"))))));
         bytes32 guardedSalt = keccak256(abi.encode(salt));
         vm.startBroadcast();
 
